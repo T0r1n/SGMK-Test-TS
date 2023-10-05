@@ -1,4 +1,4 @@
-import { BadRequestException, Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
 import { CreateNomenklatureDto } from './dto/create-nomenklature.dto';
 import { UpdateNomenklatureDto } from './dto/update-nomenklature.dto';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -31,23 +31,38 @@ export class NomenklatureService {
     return await this.nomenRepository.find();
   }
 
-  async findOne(id: number): Promise<Nomenklature>{
-    var nomenklature   = await this.nomenRepository.findOne({
-      where: { id },
-      relations: ["parentLink","parentLink.nomenklatureId"]});
+  async findOne(id: number, parentQuantity: number = 1): Promise<any> {
+    const nomenklature = await this.nomenRepository.findOne({
+        where: { id },
+        relations: ["parentLink", "parentLink.nomenklatureId"],
+    });
 
-      if (nomenklature && nomenklature.parentLink.length > 0) {
-        const childNomenklatures: Nomenklature[] = await Promise.all(
-            nomenklature.parentLink.map(link => this.findOne(link.nomenklatureId.id))
-        );
-        nomenklature.parentLink.forEach((link, index) => {
-            link.nomenklatureId = childNomenklatures[index];
-        });
+    if (!nomenklature) {
+        throw new NotFoundException(`Продукт с Id ${id} не обнаружен`);
     }
 
-      
-    return nomenklature;
-  }
+    let totalCost = nomenklature.price * parentQuantity;
+    const childProducts: any[] = [];
+
+    if (nomenklature.parentLink && nomenklature.parentLink.length > 0) {
+        for (const link of nomenklature.parentLink) {
+            const childProduct = link.nomenklatureId;
+            const childQuantity = link.kol;  
+            const childProductInfo = await this.findOne(childProduct.id, childQuantity);
+            totalCost += childProductInfo.totalCost * parentQuantity;
+            childProducts.push(childProductInfo);
+        }
+    }
+
+    return {
+        id: nomenklature.id,
+        name: nomenklature.name,
+        price: nomenklature.price,
+        quantity: parentQuantity,
+        totalCost,
+        childProducts,
+    };
+}
 
   update(id: number, updateNomenklatureDto: UpdateNomenklatureDto) {
     return `This action updates a #${id} nomenklature`;
