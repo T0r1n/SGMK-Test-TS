@@ -1,0 +1,170 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-color: #212534;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  margin-left: 3px; /* Расстояние между маркером и текстом */
+}
+
+input {
+  background-color: #191c29;
+  color: aliceblue; /* Устанавливаем цвет текста */
+  border-radius: 10px; /* Устанавливаем скругление углов */
+  border-color: aliceblue;
+  border-style: dashed;
+  border-width: 3px;
+  
+  font-family: cursive;
+  font-size: 15px;
+  text-align: center;
+  padding: 10px; /* Добавляем немного внутренних отступов для улучшенного визуального вида */
+  height: 10px;
+  margin-bottom: 5px;
+}
+input::placeholder{
+  color: aliceblue;
+}
+input:focus{
+  outline: none;
+}
+
+input:focus::placeholder {
+  opacity: 0;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+
+button {
+  color: aliceblue; /* Белый цвет текста кнопки */
+  background-color: #191c29;
+  border-style: dashed; /* Убираем границу кнопки */
+  border-radius: 10px; /* Устанавливаем скругление углов */
+  border-width: 3px;
+  border-color: aliceblue;
+  font-family: cursive;
+  font-size: 18px;
+  height: 40px;
+  padding: 0px 20px; /* Добавляем внутренние отступы для кнопки */
+  cursor: pointer; /* Делаем курсор указателя при наведении */
+}
+
+button:hover{
+  color: #191c29; /* Белый цвет текста кнопки */
+  background-color:aliceblue ;
+  border-color: #191c29;
+}
+
+
+.panel {
+  padding-top: 10px;
+  width: 300px;
+  height: 300px;
+  margin-right: 40px;
+  text-align: center;
+  font-size: 18px;
+  font-family: cursive;
+  font-weight: bold;
+  opacity: 0.7;
+  float: left;
+  color: aliceblue;
+  border-radius: 15px;
+  border-style: dashed;
+  align-items: stretch;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0px 0px 30px 20px rgba(0, 0, 0, 0.5);
+  position: relative;
+  transition: box-shadow 0.3s ease;
+  overflow-y: auto;
+}
+
+.panel:last-child {
+  margin-right: 0; /* у последней панели нет правого отступа */
+}
+
+.panel:hover {
+  animation: shimmer 2s infinite linear;
+}
+
+.panel:focus-within {
+  animation: shimmer 2s infinite linear;
+}
+
+
+@keyframes shimmer {
+  0% {
+    box-shadow: 0 0 30px 10px rgba(255, 0, 0, 0.7), 
+                0 0 30px 10px rgba(0, 0, 255, 0.7),
+                0 0 30px 10px rgba(0, 255, 0, 0.7);
+  }
+  25% {
+    box-shadow: 0 0 30px 10px rgba(255, 255, 0, 0.7), 
+                0 0 30px 10px rgba(0, 255, 0, 0.7),
+                0 0 30px 10px rgba(255, 0, 255, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 30px 10px rgba(0, 255, 0, 0.7), 
+                0 0 30px 10px rgba(255, 0, 255, 0.7),
+                0 0 30px 10px rgba(0, 0, 255, 0.7);
+  }
+  75% {
+    box-shadow: 0 0 30px 10px rgba(255, 0, 255, 0.7), 
+                0 0 30px 10px rgba(0, 0, 255, 0.7),
+                0 0 30px 10px rgba(255, 255, 0, 0.7);
+  }
+  100% {
+    box-shadow: 0 0 30px 10px rgba(0, 0, 255, 0.7), 
+                0 0 30px 10px rgba(255, 255, 0, 0.7),
+                0 0 30px 10px rgba(0, 255, 0, 0.7);
+  }
+}
+
+.panel::-webkit-scrollbar {
+  width: 7px; /* Ширина полосы прокрутки */
+}
+
+.panel::-webkit-scrollbar-track {
+  background-color: aliceblue; /* Цвет фона полосы прокрутки */
+}
+
+.panel::-webkit-scrollbar-thumb {
+  background-color: #9201f342; /* Цвет ползунка прокрутки */
+  border-radius: 5px; /* Скругленные углы ползунка */
+}
+
+
+.P1 {
+  width: 200px;
+  background-color: #191c29;
+}
+
+.P2 {
+  background-color: #191c29;
+}
+
+.P3 {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-top: 70px;
+  background-color: #191c29;
+  height: 125px;
+  text-align: center;
+  justify-items: center;
+  align-items: center;
+}
+
+
+
