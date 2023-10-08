@@ -153,6 +153,12 @@ button:hover{
 
 .P2 {
   background-color: #191c29;
+  text-align: left;
+  font-size: 15px;
+  margin-top: 0px;
+  padding-left: 15px;
+  margin-bottom: 5px;
+
 }
 
 .P3 {
@@ -167,4 +173,14 @@ button:hover{
 }
 
 
+.product-info h2,
+.product-info p,
+.product-info div {
+  margin: 5px 0; /* Уменьшает вертикальные отступы для h2, p и вложенных div */
+}
 
+.product-info h3{
+  margin: 5px 5px;
+  margin-bottom: 10px;
+  margin-left: -40px;
+}

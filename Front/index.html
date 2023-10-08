@@ -7,19 +7,25 @@
 </head>
 <body>
 
+  
+
 
   <div id="app">
     <div class="panel P1 shadow">
       <ul>
-        <li v-for="(product, index) in products" :key="product.id" @click="handleItemClick(product)" style="cursor: pointer; margin-top: 5px;">
-          {{ product.name }} - {{ product.price }}
+        <li v-for="(product, index) in products" :key="product.id" @click="handleItemClick(product)" style="cursor: pointer; margin-top: 2px;">
+          {{ product.name }}
         </li>
       </ul>
     </div>
 
 
-    <div class="panel P2 shadow"></div>
-
+    <div class="panel P2 shadow">
+      <product-info :product="productInfo" v-if="productInfo"></product-info>
+      <div v-else>
+        <h3 style="color:crimson;text-align: center;font-size: 25px;align-items: center;">Выберите продукт.</h3>
+      </div>
+    </div>
 
     <div class="panel P3 shadow">
       <input v-model="productName" placeholder="Название продукта">
