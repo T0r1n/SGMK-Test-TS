@@ -89,6 +89,7 @@ button:hover{
   position: relative;
   transition: box-shadow 0.3s ease;
   overflow-y: auto;
+  overflow-x: auto;
 }
 
 .panel:last-child {
@@ -133,6 +134,7 @@ button:hover{
 }
 
 .panel::-webkit-scrollbar {
+  height: 7px;
   width: 7px; /* Ширина полосы прокрутки */
 }
 
