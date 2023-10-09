@@ -18,8 +18,8 @@ li {
 
 input {
   background-color: #191c29;
-  color: aliceblue; /* Устанавливаем цвет текста */
-  border-radius: 10px; /* Устанавливаем скругление углов */
+  color: aliceblue; 
+  border-radius: 10px; 
   border-color: aliceblue;
   border-style: dashed;
   border-width: 3px;
@@ -48,21 +48,21 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 button {
-  color: aliceblue; /* Белый цвет текста кнопки */
+  color: aliceblue; 
   background-color: #191c29;
-  border-style: dashed; /* Убираем границу кнопки */
-  border-radius: 10px; /* Устанавливаем скругление углов */
+  border-style: dashed; 
+  border-radius: 10px; 
   border-width: 3px;
   border-color: aliceblue;
   font-family: cursive;
   font-size: 18px;
   height: 40px;
   padding: 0px 20px; /* Добавляем внутренние отступы для кнопки */
-  cursor: pointer; /* Делаем курсор указателя при наведении */
+  cursor: pointer; 
 }
 
 button:hover{
-  color: #191c29; /* Белый цвет текста кнопки */
+  color: #191c29; 
   background-color:aliceblue ;
   border-color: #191c29;
 }
@@ -137,12 +137,12 @@ button:hover{
 }
 
 .panel::-webkit-scrollbar-track {
-  background-color: aliceblue; /* Цвет фона полосы прокрутки */
+  background-color: aliceblue; 
 }
 
 .panel::-webkit-scrollbar-thumb {
   background-color: #9201f342; /* Цвет ползунка прокрутки */
-  border-radius: 5px; /* Скругленные углы ползунка */
+  border-radius: 5px; 
 }
 
 

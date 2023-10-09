@@ -20,13 +20,24 @@ const app = Vue.createApp({
             price: this.productPrice,
           }),
         });
+
+        if (!response.ok) {
+          alert("Возникла ошибка при добалении данных");
+          throw new Error(`HTTP error! status: ${response.status}`);
+          
+        }
+        this.fetchData();
+        alert("Данные успешно добавлены.");
+        this.productName = null;
+        this.productPrice = null;
+
       } catch (error) {
         console.error('Ошибка при отправке запроса:', error);
       }
     },
     async fetchData() {
       try {
-        const response = await fetch('http://localhost:3000/nomenklature'); // Замените на ваш URL API
+        const response = await fetch('/nomenklature'); 
         const data = await response.json();
         this.products = data;
       } catch (error) {
@@ -35,11 +46,11 @@ const app = Vue.createApp({
     },
     async handleItemClick(product) {
       try {
-        const response = await fetch(`http://localhost:3000/nomenklature/${product.id}`);
+        const response = await fetch(`/nomenklature/${product.id}`);
         const data = await response.json();
         console.log('Ответ от сервера:', data);
         this.productInfo = data;
-        // Здесь вы можете обработать полученные данные из API
+        
       } catch (error) {
         console.error('Ошибка при выполнении запроса к API:', error);
       }

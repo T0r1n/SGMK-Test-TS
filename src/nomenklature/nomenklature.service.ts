@@ -13,17 +13,25 @@ export class NomenklatureService {
   ){}
 
   async create(createNomenklatureDto: CreateNomenklatureDto) {
-    const existNonen = await this.nomenRepository.findOne({
-      where:{
+    if (typeof createNomenklatureDto.price !== 'number' || createNomenklatureDto.name === '') {
+      throw new BadRequestException("Некорректный формат данных.");
+    }
+  
+    const existNomen = await this.nomenRepository.findOne({
+      where: {
         name: createNomenklatureDto.name,
-      }
-    })
-    if(existNonen) throw new BadRequestException("Такой продукт уже существует.")
-
+      },
+    });
+  
+    if (existNomen) {
+      throw new BadRequestException("Такой продукт уже существует.");
+    }
+  
     const nomenklature = await this.nomenRepository.save({
       name: createNomenklatureDto.name,
-      price: createNomenklatureDto.price
-    })
+      price: createNomenklatureDto.price,
+    });
+  
     return { nomenklature };
   }
 

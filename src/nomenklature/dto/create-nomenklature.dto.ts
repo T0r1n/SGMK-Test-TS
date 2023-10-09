@@ -1,14 +1,21 @@
-import { IsEmail, IsNumber } from "class-validator";
+import { IsString, IsNumber, ValidateNested } from 'class-validator';
 
 export class ParentLinkDto {
-    nomenkllatureId: number;
-    kol: number;
-  }
+  @IsNumber()
+  nomenkllatureId: number;
+
+  @IsNumber()
+  kol: number;
+}
 
 export class CreateNomenklatureDto {
-    name: string;
-    
-    @IsNumber()
-    price: number;
-    parentLink: ParentLinkDto[];
+  @IsString()
+  name: string;
+
+  @IsNumber({}, { message: 'Цена должна быть числом' })
+  price: number;
+
+  @ValidateNested()
+  parentLink: ParentLinkDto[];
 }
+
